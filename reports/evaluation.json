@@ -1,0 +1,5635 @@
+{
+  "generatedAt": "2026-11-18T05:11:09.410Z",
+  "suites": [
+    {
+      "suite": "tuning",
+      "title": "Tuning suite (used to choose the threshold and prototypes)",
+      "scenarioCount": 30,
+      "runs": [
+        {
+          "engine": "rules",
+          "durationMs": 11,
+          "metrics": {
+            "total": 30,
+            "completed": 30,
+            "failed": 0,
+            "accuracy": 0.7,
+            "selectiveAccuracy": 1,
+            "macroF1": 0.8224,
+            "perClass": [
+              {
+                "label": "priority",
+                "support": 8,
+                "truePositives": 8,
+                "falsePositives": 0,
+                "falseNegatives": 0,
+                "precision": 1,
+                "recall": 1,
+                "f1": 1
+              },
+              {
+                "label": "follow-up",
+                "support": 8,
+                "truePositives": 8,
+                "falsePositives": 0,
+                "falseNegatives": 3,
+                "precision": 1,
+                "recall": 0.7273,
+                "f1": 0.8421
+              },
+              {
+                "label": "routine",
+                "support": 5,
+                "truePositives": 5,
+                "falsePositives": 0,
+                "falseNegatives": 6,
+                "precision": 1,
+                "recall": 0.4545,
+                "f1": 0.625
+              }
+            ],
+            "confusionMatrix": [
+              {
+                "expected": "priority",
+                "predicted": "priority",
+                "count": 8
+              },
+              {
+                "expected": "priority",
+                "predicted": "follow-up",
+                "count": 0
+              },
+              {
+                "expected": "priority",
+                "predicted": "routine",
+                "count": 0
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "priority",
+                "count": 0
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "follow-up",
+                "count": 8
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "routine",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "priority",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "follow-up",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "routine",
+                "count": 5
+              }
+            ],
+            "coverage": 0.7,
+            "abstentionRate": 0.3,
+            "fallbackRate": 0,
+            "latency": {
+              "count": 30,
+              "min": 0,
+              "max": 3,
+              "mean": 0.3,
+              "median": 0,
+              "p95": 1
+            },
+            "byCategory": [
+              {
+                "category": "abbreviation",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              },
+              {
+                "category": "ambiguous",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "contradictory",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              },
+              {
+                "category": "follow-up",
+                "total": 4,
+                "correct": 4,
+                "abstained": 0
+              },
+              {
+                "category": "low-confidence",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "malformed",
+                "total": 2,
+                "correct": 1,
+                "abstained": 1
+              },
+              {
+                "category": "missing-resource",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "negation",
+                "total": 3,
+                "correct": 3,
+                "abstained": 0
+              },
+              {
+                "category": "out-of-distribution",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "priority",
+                "total": 4,
+                "correct": 4,
+                "abstained": 0
+              },
+              {
+                "category": "routine",
+                "total": 3,
+                "correct": 3,
+                "abstained": 0
+              },
+              {
+                "category": "unusual-wording",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              }
+            ]
+          },
+          "failures": [
+            {
+              "scenarioId": "malformed-01",
+              "category": "malformed",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "confidence": 0.72,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.5833333333333334
+                },
+                {
+                  "label": "routine",
+                  "score": 0.4166666666666667
+                }
+              ],
+              "note": "Synthetic note: {{{ resident ))) stable ?? no urgent concerns <<< review pending",
+              "errorCategory": "malformed",
+              "failureMode": "unexpected-abstention",
+              "response": "Lower the abstention threshold for high-signal scenarios and re-check calibration."
+            }
+          ],
+          "records": [
+            {
+              "scenarioId": "routine-01",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 1
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 3,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: annual wellness visit completed. Resident is stable and no concerns reported today."
+            },
+            {
+              "scenarioId": "routine-02",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 1
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: routine blood work returned normal results. Standard preventive care continues."
+            },
+            {
+              "scenarioId": "routine-03",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.92,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 1
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 1,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: chronic condition unchanged from last month. Regular review only, nothing outstanding."
+            },
+            {
+              "scenarioId": "followup-01",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.97,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 1
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident reports dizziness after medication change; follow-up scheduling requested within seven days."
+            },
+            {
+              "scenarioId": "followup-02",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.97,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 1
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: wound site dry and intact, no erythema. Suture removal due in ten days; scheduling assistance requested."
+            },
+            {
+              "scenarioId": "followup-03",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 1
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: prescription renewal to be arranged by the pharmacy team within seven days."
+            },
+            {
+              "scenarioId": "followup-04",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.92,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 1
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 1,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: monitoring plan remains open. Care team to review readings and arrange the next appointment."
+            },
+            {
+              "scenarioId": "priority-01",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.97,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 1
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident found on floor in the early morning. Appears acutely unwell and short of breath on exertion. Escalated for urgent clinician assessment this morning."
+            },
+            {
+              "scenarioId": "priority-02",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.88,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 1
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident reports a mild headache this morning and blood pressure measured markedly elevated at 164/88. Same-day clinician review requested."
+            },
+            {
+              "scenarioId": "priority-03",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 1
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 1,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: new acute confusion observed this evening with slurred speech. Emergency assessment required."
+            },
+            {
+              "scenarioId": "priority-04",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 1
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident reports chest pain on exertion, worsening over the past hour. Same-day urgent review needed."
+            },
+            {
+              "scenarioId": "negation-01",
+              "category": "negation",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.358974358974359
+                },
+                {
+                  "label": "routine",
+                  "score": 0.6410256410256411
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: annual wellness visit completed. No urgent concerns. Routine care-plan review remains open."
+            },
+            {
+              "scenarioId": "negation-02",
+              "category": "negation",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.875
+                },
+                {
+                  "label": "routine",
+                  "score": 0.125
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 1,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident denies dizziness, denies falls and reports no concerns today. Prescription renewal to be arranged within seven days."
+            },
+            {
+              "scenarioId": "negation-03",
+              "category": "negation",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.84,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 1
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: chest pain ruled out. Symptoms stable and unchanged since the previous visit."
+            },
+            {
+              "scenarioId": "abbrev-01",
+              "category": "abbreviation",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.92,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 1
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: pt reports SOB w/ exertion, afib hx, f/u w/ cardiology requested, Rx renewal pending, PT/OT eval ordered."
+            },
+            {
+              "scenarioId": "abbrev-02",
+              "category": "abbreviation",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 1
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: pt found on floor at 0700. A&O x3, resp distress. MD eval STAT requested."
+            },
+            {
+              "scenarioId": "contradictory-01",
+              "category": "contradictory",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.84,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.5714285714285714
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0.42857142857142855
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: observations stable and within normal range. However resident reports chest pain and requires urgent assessment."
+            },
+            {
+              "scenarioId": "contradictory-02",
+              "category": "contradictory",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.875
+                },
+                {
+                  "label": "routine",
+                  "score": 0.125
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 1,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident stable, no acute concerns. Care-plan activity remains open and follow-up scheduling is requested."
+            },
+            {
+              "scenarioId": "ambiguous-01",
+              "category": "ambiguous",
+              "expected": "follow-up",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: resident seems a bit off today, maybe worth another look at some point."
+            },
+            {
+              "scenarioId": "ambiguous-02",
+              "category": "ambiguous",
+              "expected": "follow-up",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: discussed at handover, will review later."
+            },
+            {
+              "scenarioId": "missing-01",
+              "category": "missing-resource",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "missing-data",
+              "note": ""
+            },
+            {
+              "scenarioId": "missing-02",
+              "category": "missing-resource",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "missing-data",
+              "note": ""
+            },
+            {
+              "scenarioId": "unusual-01",
+              "category": "unusual-wording",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.8,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 1
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: the family asked whether the next appointment could be moved. We said we would try to sort it out and get back to them."
+            },
+            {
+              "scenarioId": "unusual-02",
+              "category": "unusual-wording",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.84,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 1
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident was not making sense and could barely breathe, so we called the doctor straight away."
+            },
+            {
+              "scenarioId": "ood-01",
+              "category": "out-of-distribution",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "out-of-distribution",
+              "note": "Synthetic note: the cafeteria will be serving soup and sandwiches today. The garden club meets on Thursday."
+            },
+            {
+              "scenarioId": "ood-02",
+              "category": "out-of-distribution",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "out-of-distribution",
+              "note": "Synthetic note: invoice 4471 was paid. The supply cupboard key has been misplaced again."
+            },
+            {
+              "scenarioId": "lowconf-01",
+              "category": "low-confidence",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: ok."
+            },
+            {
+              "scenarioId": "lowconf-02",
+              "category": "low-confidence",
+              "expected": "follow-up",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: review."
+            },
+            {
+              "scenarioId": "malformed-01",
+              "category": "malformed",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.72,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.5833333333333334
+                },
+                {
+                  "label": "routine",
+                  "score": 0.4166666666666667
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: {{{ resident ))) stable ?? no urgent concerns <<< review pending"
+            },
+            {
+              "scenarioId": "malformed-02",
+              "category": "malformed",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.92,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 1
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 1,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: Â£Â£ urgent Â€” resident acutely unwell, please review immediately."
+            }
+          ]
+        },
+        {
+          "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+          "durationMs": 1023,
+          "metrics": {
+            "total": 30,
+            "completed": 30,
+            "failed": 0,
+            "accuracy": 0.6333,
+            "selectiveAccuracy": 0.95,
+            "macroF1": 0.7623,
+            "perClass": [
+              {
+                "label": "priority",
+                "support": 7,
+                "truePositives": 7,
+                "falsePositives": 1,
+                "falseNegatives": 1,
+                "precision": 0.875,
+                "recall": 0.875,
+                "f1": 0.875
+              },
+              {
+                "label": "follow-up",
+                "support": 7,
+                "truePositives": 6,
+                "falsePositives": 0,
+                "falseNegatives": 5,
+                "precision": 1,
+                "recall": 0.5455,
+                "f1": 0.7059
+              },
+              {
+                "label": "routine",
+                "support": 6,
+                "truePositives": 6,
+                "falsePositives": 0,
+                "falseNegatives": 5,
+                "precision": 1,
+                "recall": 0.5455,
+                "f1": 0.7059
+              }
+            ],
+            "confusionMatrix": [
+              {
+                "expected": "priority",
+                "predicted": "priority",
+                "count": 7
+              },
+              {
+                "expected": "priority",
+                "predicted": "follow-up",
+                "count": 0
+              },
+              {
+                "expected": "priority",
+                "predicted": "routine",
+                "count": 0
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "priority",
+                "count": 1
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "follow-up",
+                "count": 6
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "routine",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "priority",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "follow-up",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "routine",
+                "count": 6
+              }
+            ],
+            "coverage": 0.6667,
+            "abstentionRate": 0.3333,
+            "fallbackRate": 0,
+            "latency": {
+              "count": 30,
+              "min": 27,
+              "max": 69,
+              "mean": 34.0333,
+              "median": 31,
+              "p95": 49
+            },
+            "byCategory": [
+              {
+                "category": "abbreviation",
+                "total": 2,
+                "correct": 1,
+                "abstained": 0
+              },
+              {
+                "category": "ambiguous",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "contradictory",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              },
+              {
+                "category": "follow-up",
+                "total": 4,
+                "correct": 3,
+                "abstained": 1
+              },
+              {
+                "category": "low-confidence",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "malformed",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              },
+              {
+                "category": "missing-resource",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "negation",
+                "total": 3,
+                "correct": 3,
+                "abstained": 0
+              },
+              {
+                "category": "out-of-distribution",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "priority",
+                "total": 4,
+                "correct": 3,
+                "abstained": 1
+              },
+              {
+                "category": "routine",
+                "total": 3,
+                "correct": 3,
+                "abstained": 0
+              },
+              {
+                "category": "unusual-wording",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              }
+            ]
+          },
+          "failures": [
+            {
+              "scenarioId": "followup-02",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "confidence": 0.2524,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1444
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.4364
+                },
+                {
+                  "label": "routine",
+                  "score": 0.4193
+                }
+              ],
+              "note": "Synthetic note: wound site dry and intact, no erythema. Suture removal due in ten days; scheduling assistance requested.",
+              "errorCategory": "follow-up",
+              "failureMode": "unexpected-abstention",
+              "response": "Lower the abstention threshold for high-signal scenarios and re-check calibration."
+            },
+            {
+              "scenarioId": "priority-02",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "follow-up",
+              "confidence": 0.467,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.4006
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.5073
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0921
+                }
+              ],
+              "note": "Synthetic note: resident reports a mild headache this morning and blood pressure measured markedly elevated at 164/88. Same-day clinician review requested.",
+              "errorCategory": "priority",
+              "failureMode": "unexpected-abstention",
+              "response": "Lower the abstention threshold for high-signal scenarios and re-check calibration."
+            },
+            {
+              "scenarioId": "abbrev-01",
+              "category": "abbreviation",
+              "expected": "follow-up",
+              "predicted": "priority",
+              "confidence": 0.8427,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.6853
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.2327
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0819
+                }
+              ],
+              "note": "Synthetic note: pt reports SOB w/ exertion, afib hx, f/u w/ cardiology requested, Rx renewal pending, PT/OT eval ordered.",
+              "errorCategory": "abbreviation",
+              "failureMode": "wrong-label",
+              "response": "Review the prototype wording and add the scenario to the regression suite."
+            }
+          ],
+          "records": [
+            {
+              "scenarioId": "routine-01",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.9295,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0937
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0474
+                },
+                {
+                  "label": "routine",
+                  "score": 0.859
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 36,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: annual wellness visit completed. Resident is stable and no concerns reported today."
+            },
+            {
+              "scenarioId": "routine-02",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.9275,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0263
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.1185
+                },
+                {
+                  "label": "routine",
+                  "score": 0.8551
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 36,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: routine blood work returned normal results. Standard preventive care continues."
+            },
+            {
+              "scenarioId": "routine-03",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.8069,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1229
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.2634
+                },
+                {
+                  "label": "routine",
+                  "score": 0.6137
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 32,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: chronic condition unchanged from last month. Regular review only, nothing outstanding."
+            },
+            {
+              "scenarioId": "followup-01",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.8834,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1933
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.7668
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0399
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 48,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident reports dizziness after medication change; follow-up scheduling requested within seven days."
+            },
+            {
+              "scenarioId": "followup-02",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.2524,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1444
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.4364
+                },
+                {
+                  "label": "routine",
+                  "score": 0.4193
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 46,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: wound site dry and intact, no erythema. Suture removal due in ten days; scheduling assistance requested."
+            },
+            {
+              "scenarioId": "followup-03",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.946,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0777
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.8919
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0304
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: prescription renewal to be arranged by the pharmacy team within seven days."
+            },
+            {
+              "scenarioId": "followup-04",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.9789,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0091
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.9579
+                },
+                {
+                  "label": "routine",
+                  "score": 0.033
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 32,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: monitoring plan remains open. Care team to review readings and arrange the next appointment."
+            },
+            {
+              "scenarioId": "priority-01",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9368,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.8736
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.096
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0304
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 69,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident found on floor in the early morning. Appears acutely unwell and short of breath on exertion. Escalated for urgent clinician assessment this morning."
+            },
+            {
+              "scenarioId": "priority-02",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.467,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.4006
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.5073
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0921
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 49,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident reports a mild headache this morning and blood pressure measured markedly elevated at 164/88. Same-day clinician review requested."
+            },
+            {
+              "scenarioId": "priority-03",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9418,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.8836
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0797
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0367
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 29,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: new acute confusion observed this evening with slurred speech. Emergency assessment required."
+            },
+            {
+              "scenarioId": "priority-04",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.8531,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.7062
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.2286
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0652
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 31,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident reports chest pain on exertion, worsening over the past hour. Same-day urgent review needed."
+            },
+            {
+              "scenarioId": "negation-01",
+              "category": "negation",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.8579,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0016
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.2825
+                },
+                {
+                  "label": "routine",
+                  "score": 0.7159
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 31,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: annual wellness visit completed. No urgent concerns. Routine care-plan review remains open."
+            },
+            {
+              "scenarioId": "negation-02",
+              "category": "negation",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.7916,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1093
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.5832
+                },
+                {
+                  "label": "routine",
+                  "score": 0.3075
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 31,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident denies dizziness, denies falls and reports no concerns today. Prescription renewal to be arranged within seven days."
+            },
+            {
+              "scenarioId": "negation-03",
+              "category": "negation",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.8131,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0592
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.3147
+                },
+                {
+                  "label": "routine",
+                  "score": 0.6261
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: chest pain ruled out. Symptoms stable and unchanged since the previous visit."
+            },
+            {
+              "scenarioId": "abbrev-01",
+              "category": "abbreviation",
+              "expected": "follow-up",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.8427,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.6853
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.2327
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0819
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 47,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: pt reports SOB w/ exertion, afib hx, f/u w/ cardiology requested, Rx renewal pending, PT/OT eval ordered."
+            },
+            {
+              "scenarioId": "abbrev-02",
+              "category": "abbreviation",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9269,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.8539
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0873
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0588
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 35,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: pt found on floor at 0700. A&O x3, resp distress. MD eval STAT requested."
+            },
+            {
+              "scenarioId": "contradictory-01",
+              "category": "contradictory",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9642,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9283
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0135
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0582
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 36,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: observations stable and within normal range. However resident reports chest pain and requires urgent assessment."
+            },
+            {
+              "scenarioId": "contradictory-02",
+              "category": "contradictory",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.9273,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0098
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.8545
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1357
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident stable, no acute concerns. Care-plan activity remains open and follow-up scheduling is requested."
+            },
+            {
+              "scenarioId": "ambiguous-01",
+              "category": "ambiguous",
+              "expected": "follow-up",
+              "predicted": "priority",
+              "abstained": true,
+              "confidence": 0.5923,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.4702
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.2916
+                },
+                {
+                  "label": "routine",
+                  "score": 0.2382
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 29,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: resident seems a bit off today, maybe worth another look at some point."
+            },
+            {
+              "scenarioId": "ambiguous-02",
+              "category": "ambiguous",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.8316,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.187
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.6632
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1498
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: discussed at handover, will review later."
+            },
+            {
+              "scenarioId": "missing-01",
+              "category": "missing-resource",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.7564,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2808
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.5272
+                },
+                {
+                  "label": "routine",
+                  "score": 0.192
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "missing-data",
+              "note": ""
+            },
+            {
+              "scenarioId": "missing-02",
+              "category": "missing-resource",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.7564,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2808
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.5272
+                },
+                {
+                  "label": "routine",
+                  "score": 0.192
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 27,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "missing-data",
+              "note": ""
+            },
+            {
+              "scenarioId": "unusual-01",
+              "category": "unusual-wording",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.9234,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1016
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.8468
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0516
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 35,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: the family asked whether the next appointment could be moved. We said we would try to sort it out and get back to them."
+            },
+            {
+              "scenarioId": "unusual-02",
+              "category": "unusual-wording",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9542,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9084
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0194
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0722
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 30,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident was not making sense and could barely breathe, so we called the doctor straight away."
+            },
+            {
+              "scenarioId": "ood-01",
+              "category": "out-of-distribution",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.7963,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2438
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.5925
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1637
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 30,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "out-of-distribution",
+              "note": "Synthetic note: the cafeteria will be serving soup and sandwiches today. The garden club meets on Thursday."
+            },
+            {
+              "scenarioId": "ood-02",
+              "category": "out-of-distribution",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.5403,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2475
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.4545
+                },
+                {
+                  "label": "routine",
+                  "score": 0.298
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 32,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "out-of-distribution",
+              "note": "Synthetic note: invoice 4471 was paid. The supply cupboard key has been misplaced again."
+            },
+            {
+              "scenarioId": "lowconf-01",
+              "category": "low-confidence",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0.8343,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1411
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.1904
+                },
+                {
+                  "label": "routine",
+                  "score": 0.6686
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 27,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: ok."
+            },
+            {
+              "scenarioId": "lowconf-02",
+              "category": "low-confidence",
+              "expected": "follow-up",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0.4108,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.379
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.1535
+                },
+                {
+                  "label": "routine",
+                  "score": 0.4675
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 27,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: review."
+            },
+            {
+              "scenarioId": "malformed-01",
+              "category": "malformed",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.8295,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1911
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.15
+                },
+                {
+                  "label": "routine",
+                  "score": 0.6589
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: {{{ resident ))) stable ?? no urgent concerns <<< review pending"
+            },
+            {
+              "scenarioId": "malformed-02",
+              "category": "malformed",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9838
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0069
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0093
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: Â£Â£ urgent Â€” resident acutely unwell, please review immediately."
+            }
+          ]
+        },
+        {
+          "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+          "durationMs": 1052,
+          "metrics": {
+            "total": 30,
+            "completed": 30,
+            "failed": 0,
+            "accuracy": 0.6,
+            "selectiveAccuracy": 1,
+            "macroF1": 0.7547,
+            "perClass": [
+              {
+                "label": "priority",
+                "support": 7,
+                "truePositives": 7,
+                "falsePositives": 0,
+                "falseNegatives": 1,
+                "precision": 1,
+                "recall": 0.875,
+                "f1": 0.9333
+              },
+              {
+                "label": "follow-up",
+                "support": 6,
+                "truePositives": 6,
+                "falsePositives": 0,
+                "falseNegatives": 5,
+                "precision": 1,
+                "recall": 0.5455,
+                "f1": 0.7059
+              },
+              {
+                "label": "routine",
+                "support": 5,
+                "truePositives": 5,
+                "falsePositives": 0,
+                "falseNegatives": 6,
+                "precision": 1,
+                "recall": 0.4545,
+                "f1": 0.625
+              }
+            ],
+            "confusionMatrix": [
+              {
+                "expected": "priority",
+                "predicted": "priority",
+                "count": 7
+              },
+              {
+                "expected": "priority",
+                "predicted": "follow-up",
+                "count": 0
+              },
+              {
+                "expected": "priority",
+                "predicted": "routine",
+                "count": 0
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "priority",
+                "count": 0
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "follow-up",
+                "count": 6
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "routine",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "priority",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "follow-up",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "routine",
+                "count": 5
+              }
+            ],
+            "coverage": 0.6,
+            "abstentionRate": 0.4,
+            "fallbackRate": 0,
+            "latency": {
+              "count": 30,
+              "min": 26,
+              "max": 68,
+              "mean": 35.0667,
+              "median": 30,
+              "p95": 65
+            },
+            "byCategory": [
+              {
+                "category": "abbreviation",
+                "total": 2,
+                "correct": 1,
+                "abstained": 1
+              },
+              {
+                "category": "ambiguous",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "contradictory",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              },
+              {
+                "category": "follow-up",
+                "total": 4,
+                "correct": 3,
+                "abstained": 1
+              },
+              {
+                "category": "low-confidence",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "malformed",
+                "total": 2,
+                "correct": 1,
+                "abstained": 1
+              },
+              {
+                "category": "missing-resource",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "negation",
+                "total": 3,
+                "correct": 3,
+                "abstained": 0
+              },
+              {
+                "category": "out-of-distribution",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "priority",
+                "total": 4,
+                "correct": 3,
+                "abstained": 1
+              },
+              {
+                "category": "routine",
+                "total": 3,
+                "correct": 3,
+                "abstained": 0
+              },
+              {
+                "category": "unusual-wording",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              }
+            ]
+          },
+          "failures": [
+            {
+              "scenarioId": "followup-02",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "confidence": 0.6912,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0866
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.6618
+                },
+                {
+                  "label": "routine",
+                  "score": 0.2516
+                }
+              ],
+              "note": "Synthetic note: wound site dry and intact, no erythema. Suture removal due in ten days; scheduling assistance requested.",
+              "errorCategory": "follow-up",
+              "failureMode": "unexpected-abstention",
+              "response": "Lower the abstention threshold for high-signal scenarios and re-check calibration."
+            },
+            {
+              "scenarioId": "priority-02",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.6404
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.3044
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0553
+                }
+              ],
+              "note": "Synthetic note: resident reports a mild headache this morning and blood pressure measured markedly elevated at 164/88. Same-day clinician review requested.",
+              "errorCategory": "priority",
+              "failureMode": "unexpected-abstention",
+              "response": "Lower the abstention threshold for high-signal scenarios and re-check calibration."
+            },
+            {
+              "scenarioId": "abbrev-01",
+              "category": "abbreviation",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.4112
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.5396
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0491
+                }
+              ],
+              "note": "Synthetic note: pt reports SOB w/ exertion, afib hx, f/u w/ cardiology requested, Rx renewal pending, PT/OT eval ordered.",
+              "errorCategory": "abbreviation",
+              "failureMode": "unexpected-abstention",
+              "response": "Lower the abstention threshold for high-signal scenarios and re-check calibration."
+            },
+            {
+              "scenarioId": "malformed-01",
+              "category": "malformed",
+              "expected": "routine",
+              "predicted": "routine",
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1147
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.3233
+                },
+                {
+                  "label": "routine",
+                  "score": 0.562
+                }
+              ],
+              "note": "Synthetic note: {{{ resident ))) stable ?? no urgent concerns <<< review pending",
+              "errorCategory": "malformed",
+              "failureMode": "unexpected-abstention",
+              "response": "Lower the abstention threshold for high-signal scenarios and re-check calibration."
+            }
+          ],
+          "records": [
+            {
+              "scenarioId": "routine-01",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0562
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0284
+                },
+                {
+                  "label": "routine",
+                  "score": 0.9154
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 32,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: annual wellness visit completed. Resident is stable and no concerns reported today."
+            },
+            {
+              "scenarioId": "routine-02",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0158
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0711
+                },
+                {
+                  "label": "routine",
+                  "score": 0.9131
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 43,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: routine blood work returned normal results. Standard preventive care continues."
+            },
+            {
+              "scenarioId": "routine-03",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.9435,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0737
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.158
+                },
+                {
+                  "label": "routine",
+                  "score": 0.7682
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 65,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: chronic condition unchanged from last month. Regular review only, nothing outstanding."
+            },
+            {
+              "scenarioId": "followup-01",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.116
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.8601
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0239
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 46,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident reports dizziness after medication change; follow-up scheduling requested within seven days."
+            },
+            {
+              "scenarioId": "followup-02",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.6912,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0866
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.6618
+                },
+                {
+                  "label": "routine",
+                  "score": 0.2516
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 46,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: wound site dry and intact, no erythema. Suture removal due in ten days; scheduling assistance requested."
+            },
+            {
+              "scenarioId": "followup-03",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0466
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.9351
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0182
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: prescription renewal to be arranged by the pharmacy team within seven days."
+            },
+            {
+              "scenarioId": "followup-04",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0055
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.9747
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0198
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 30,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: monitoring plan remains open. Care team to review readings and arrange the next appointment."
+            },
+            {
+              "scenarioId": "priority-01",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9242
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0576
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0182
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 68,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident found on floor in the early morning. Appears acutely unwell and short of breath on exertion. Escalated for urgent clinician assessment this morning."
+            },
+            {
+              "scenarioId": "priority-02",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.6404
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.3044
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0553
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 49,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident reports a mild headache this morning and blood pressure measured markedly elevated at 164/88. Same-day clinician review requested."
+            },
+            {
+              "scenarioId": "priority-03",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9302
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0478
+                },
+                {
+                  "label": "routine",
+                  "score": 0.022
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: new acute confusion observed this evening with slurred speech. Emergency assessment required."
+            },
+            {
+              "scenarioId": "priority-04",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9765,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.8237
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.1372
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0391
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 32,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident reports chest pain on exertion, worsening over the past hour. Same-day urgent review needed."
+            },
+            {
+              "scenarioId": "negation-01",
+              "category": "negation",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.9789,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.001
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.3131
+                },
+                {
+                  "label": "routine",
+                  "score": 0.686
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 30,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: annual wellness visit completed. No urgent concerns. Routine care-plan review remains open."
+            },
+            {
+              "scenarioId": "negation-02",
+              "category": "negation",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.9458,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0656
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.6999
+                },
+                {
+                  "label": "routine",
+                  "score": 0.2345
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 33,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident denies dizziness, denies falls and reports no concerns today. Prescription renewal to be arranged within seven days."
+            },
+            {
+              "scenarioId": "negation-03",
+              "category": "negation",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.9065,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0355
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.1888
+                },
+                {
+                  "label": "routine",
+                  "score": 0.7757
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: chest pain ruled out. Symptoms stable and unchanged since the previous visit."
+            },
+            {
+              "scenarioId": "abbrev-01",
+              "category": "abbreviation",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.4112
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.5396
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0491
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 47,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: pt reports SOB w/ exertion, afib hx, f/u w/ cardiology requested, Rx renewal pending, PT/OT eval ordered."
+            },
+            {
+              "scenarioId": "abbrev-02",
+              "category": "abbreviation",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9123
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0524
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0353
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 36,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: pt found on floor at 0700. A&O x3, resp distress. MD eval STAT requested."
+            },
+            {
+              "scenarioId": "contradictory-01",
+              "category": "contradictory",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9821,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.7856
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0081
+                },
+                {
+                  "label": "routine",
+                  "score": 0.2063
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 36,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: observations stable and within normal range. However resident reports chest pain and requires urgent assessment."
+            },
+            {
+              "scenarioId": "contradictory-02",
+              "category": "contradictory",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0059
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.8627
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1314
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 30,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident stable, no acute concerns. Care-plan activity remains open and follow-up scheduling is requested."
+            },
+            {
+              "scenarioId": "ambiguous-01",
+              "category": "ambiguous",
+              "expected": "follow-up",
+              "predicted": "priority",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2821
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.175
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1429
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: resident seems a bit off today, maybe worth another look at some point."
+            },
+            {
+              "scenarioId": "ambiguous-02",
+              "category": "ambiguous",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1122
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.3979
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0899
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: discussed at handover, will review later."
+            },
+            {
+              "scenarioId": "missing-01",
+              "category": "missing-resource",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1685
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.3163
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1152
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 26,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "missing-data",
+              "note": ""
+            },
+            {
+              "scenarioId": "missing-02",
+              "category": "missing-resource",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1685
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.3163
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1152
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 27,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "missing-data",
+              "note": ""
+            },
+            {
+              "scenarioId": "unusual-01",
+              "category": "unusual-wording",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.9417,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.061
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.9081
+                },
+                {
+                  "label": "routine",
+                  "score": 0.031
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 35,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: the family asked whether the next appointment could be moved. We said we would try to sort it out and get back to them."
+            },
+            {
+              "scenarioId": "unusual-02",
+              "category": "unusual-wording",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9771,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.945
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0116
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0433
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 29,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident was not making sense and could barely breathe, so we called the doctor straight away."
+            },
+            {
+              "scenarioId": "ood-01",
+              "category": "out-of-distribution",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1463
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.3555
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0982
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 30,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "out-of-distribution",
+              "note": "Synthetic note: the cafeteria will be serving soup and sandwiches today. The garden club meets on Thursday."
+            },
+            {
+              "scenarioId": "ood-02",
+              "category": "out-of-distribution",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1485
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.2727
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1788
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 32,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "out-of-distribution",
+              "note": "Synthetic note: invoice 4471 was paid. The supply cupboard key has been misplaced again."
+            },
+            {
+              "scenarioId": "lowconf-01",
+              "category": "low-confidence",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0.4972,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0847
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.1142
+                },
+                {
+                  "label": "routine",
+                  "score": 0.4012
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 27,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: ok."
+            },
+            {
+              "scenarioId": "lowconf-02",
+              "category": "low-confidence",
+              "expected": "follow-up",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0.2854,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2274
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0921
+                },
+                {
+                  "label": "routine",
+                  "score": 0.2805
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 26,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: review."
+            },
+            {
+              "scenarioId": "malformed-01",
+              "category": "malformed",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1147
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.3233
+                },
+                {
+                  "label": "routine",
+                  "score": 0.562
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: {{{ resident ))) stable ?? no urgent concerns <<< review pending"
+            },
+            {
+              "scenarioId": "malformed-02",
+              "category": "malformed",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9903
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0041
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0056
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 29,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: Â£Â£ urgent Â€” resident acutely unwell, please review immediately."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "suite": "validation",
+      "title": "Held-out validation suite (never used for tuning)",
+      "scenarioCount": 22,
+      "runs": [
+        {
+          "engine": "rules",
+          "durationMs": 4,
+          "metrics": {
+            "total": 22,
+            "completed": 22,
+            "failed": 0,
+            "accuracy": 0.8182,
+            "selectiveAccuracy": 1,
+            "macroF1": 0.8868,
+            "perClass": [
+              {
+                "label": "priority",
+                "support": 7,
+                "truePositives": 7,
+                "falsePositives": 0,
+                "falseNegatives": 0,
+                "precision": 1,
+                "recall": 1,
+                "f1": 1
+              },
+              {
+                "label": "follow-up",
+                "support": 7,
+                "truePositives": 7,
+                "falsePositives": 0,
+                "falseNegatives": 1,
+                "precision": 1,
+                "recall": 0.875,
+                "f1": 0.9333
+              },
+              {
+                "label": "routine",
+                "support": 4,
+                "truePositives": 4,
+                "falsePositives": 0,
+                "falseNegatives": 3,
+                "precision": 1,
+                "recall": 0.5714,
+                "f1": 0.7272
+              }
+            ],
+            "confusionMatrix": [
+              {
+                "expected": "priority",
+                "predicted": "priority",
+                "count": 7
+              },
+              {
+                "expected": "priority",
+                "predicted": "follow-up",
+                "count": 0
+              },
+              {
+                "expected": "priority",
+                "predicted": "routine",
+                "count": 0
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "priority",
+                "count": 0
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "follow-up",
+                "count": 7
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "routine",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "priority",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "follow-up",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "routine",
+                "count": 4
+              }
+            ],
+            "coverage": 0.8182,
+            "abstentionRate": 0.1818,
+            "fallbackRate": 0,
+            "latency": {
+              "count": 22,
+              "min": 0,
+              "max": 1,
+              "mean": 0.1364,
+              "median": 0,
+              "p95": 1
+            },
+            "byCategory": [
+              {
+                "category": "abbreviation",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              },
+              {
+                "category": "contradictory",
+                "total": 1,
+                "correct": 1,
+                "abstained": 0
+              },
+              {
+                "category": "follow-up",
+                "total": 3,
+                "correct": 3,
+                "abstained": 0
+              },
+              {
+                "category": "low-confidence",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "malformed",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              },
+              {
+                "category": "negation",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              },
+              {
+                "category": "out-of-distribution",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "priority",
+                "total": 3,
+                "correct": 3,
+                "abstained": 0
+              },
+              {
+                "category": "routine",
+                "total": 3,
+                "correct": 3,
+                "abstained": 0
+              },
+              {
+                "category": "unusual-wording",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              }
+            ]
+          },
+          "failures": [],
+          "records": [
+            {
+              "scenarioId": "val-routine-01",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.88,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 1
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 1,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: blood sugar readings within the target range all week. Insulin dose unchanged and the resident reports feeling well."
+            },
+            {
+              "scenarioId": "val-routine-02",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 1
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: podiatry check completed, toenails trimmed and no concerns raised. Nothing outstanding for the care team."
+            },
+            {
+              "scenarioId": "val-routine-03",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.76,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 1
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: mobility unchanged since the previous assessment. Walks unaided to the dining room without shortness of breath."
+            },
+            {
+              "scenarioId": "val-followup-01",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 1
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident reports light-headedness when standing after the antihypertensive dose was adjusted. Repeat postural readings arranged for next week."
+            },
+            {
+              "scenarioId": "val-followup-02",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.97,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.8936170212765957
+                },
+                {
+                  "label": "routine",
+                  "score": 0.10638297872340426
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: dressing on the left shin is soiled and needs changing. The wound is not infected but the dressing must be reviewed tomorrow."
+            },
+            {
+              "scenarioId": "val-followup-03",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.8936170212765957
+                },
+                {
+                  "label": "routine",
+                  "score": 0.10638297872340426
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: hearing aid batteries replaced. An annual hearing check still needs booking with the audiology team."
+            },
+            {
+              "scenarioId": "val-priority-01",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 1
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 1,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: facial droop noticed at breakfast with weakness down the right arm. Stroke pathway activated and the resident is being seen immediately."
+            },
+            {
+              "scenarioId": "val-priority-02",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.96,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 1
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: oxygen saturation dropped to 88% during the night with increasing work of breathing. Urgent medical review requested this morning."
+            },
+            {
+              "scenarioId": "val-priority-03",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.92,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 1
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: uncontrolled bleeding from a grazed knee that did not stop after ten minutes of pressure. Immediate clinician attention required."
+            },
+            {
+              "scenarioId": "val-negation-01",
+              "category": "negation",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.76,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 1
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident denies any shortness of breath on the stairs. Breathing is comfortable at rest and the chest is clear."
+            },
+            {
+              "scenarioId": "val-negation-02",
+              "category": "negation",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.94,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 1
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident denies falls since the last visit. Medication review still to be arranged by the pharmacist."
+            },
+            {
+              "scenarioId": "val-abbrev-01",
+              "category": "abbreviation",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.84,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 1
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: pt c/o dizziness w/ postural changes. f/u w/ pharmacist requested, Rx review pending."
+            },
+            {
+              "scenarioId": "val-abbrev-02",
+              "category": "abbreviation",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.92,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 1
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: pt found on floor 0600, A&O x2, RR 30, hypoxic. MD review STAT."
+            },
+            {
+              "scenarioId": "val-contradictory-01",
+              "category": "contradictory",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.84,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.6666666666666666
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0.3333333333333333
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 1,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: observations are unremarkable and temperature is normal. However the resident is confused and has collapsed twice today, requiring urgent assessment."
+            },
+            {
+              "scenarioId": "val-unusual-01",
+              "category": "unusual-wording",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.88,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 1
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: the son asked when Mum comes back for her check. We said we would ring the clinic and sort the booking out for her."
+            },
+            {
+              "scenarioId": "val-unusual-02",
+              "category": "unusual-wording",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.76,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 1
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: the resident was slurring her words and could not get her breath, so the nurse called the doctor straight away."
+            },
+            {
+              "scenarioId": "val-ood-01",
+              "category": "out-of-distribution",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.84,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 1
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "out-of-distribution",
+              "note": "Synthetic note: the fire drill is scheduled for Tuesday. The laundry room key needs replacing before then."
+            },
+            {
+              "scenarioId": "val-ood-02",
+              "category": "out-of-distribution",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "out-of-distribution",
+              "note": "Synthetic note: the quarterly catering invoice was approved. The new laptop arrives on Thursday."
+            },
+            {
+              "scenarioId": "val-lowconf-01",
+              "category": "low-confidence",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: noted."
+            },
+            {
+              "scenarioId": "val-lowconf-02",
+              "category": "low-confidence",
+              "expected": "follow-up",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: ring back later please."
+            },
+            {
+              "scenarioId": "val-malformed-01",
+              "category": "malformed",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.9,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0
+                },
+                {
+                  "label": "follow-up",
+                  "score": 1
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: Â€” prescription renewal pending, due in five days."
+            },
+            {
+              "scenarioId": "val-malformed-02",
+              "category": "malformed",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 1
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0
+                },
+                {
+                  "label": "routine",
+                  "score": 0
+                }
+              ],
+              "engine": "rules",
+              "latencyMs": 0,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: {{{ urgent !!! resident acutely unwell ??? same-day review needed"
+            }
+          ]
+        },
+        {
+          "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+          "durationMs": 708,
+          "metrics": {
+            "total": 22,
+            "completed": 22,
+            "failed": 0,
+            "accuracy": 0.6364,
+            "selectiveAccuracy": 1,
+            "macroF1": 0.7379,
+            "perClass": [
+              {
+                "label": "priority",
+                "support": 7,
+                "truePositives": 7,
+                "falsePositives": 0,
+                "falseNegatives": 0,
+                "precision": 1,
+                "recall": 1,
+                "f1": 1
+              },
+              {
+                "label": "follow-up",
+                "support": 5,
+                "truePositives": 5,
+                "falsePositives": 0,
+                "falseNegatives": 3,
+                "precision": 1,
+                "recall": 0.625,
+                "f1": 0.7692
+              },
+              {
+                "label": "routine",
+                "support": 2,
+                "truePositives": 2,
+                "falsePositives": 0,
+                "falseNegatives": 5,
+                "precision": 1,
+                "recall": 0.2857,
+                "f1": 0.4444
+              }
+            ],
+            "confusionMatrix": [
+              {
+                "expected": "priority",
+                "predicted": "priority",
+                "count": 7
+              },
+              {
+                "expected": "priority",
+                "predicted": "follow-up",
+                "count": 0
+              },
+              {
+                "expected": "priority",
+                "predicted": "routine",
+                "count": 0
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "priority",
+                "count": 0
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "follow-up",
+                "count": 5
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "routine",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "priority",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "follow-up",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "routine",
+                "count": 2
+              }
+            ],
+            "coverage": 0.6364,
+            "abstentionRate": 0.3636,
+            "fallbackRate": 0,
+            "latency": {
+              "count": 22,
+              "min": 27,
+              "max": 42,
+              "mean": 32.1364,
+              "median": 32,
+              "p95": 40
+            },
+            "byCategory": [
+              {
+                "category": "abbreviation",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              },
+              {
+                "category": "contradictory",
+                "total": 1,
+                "correct": 1,
+                "abstained": 0
+              },
+              {
+                "category": "follow-up",
+                "total": 3,
+                "correct": 2,
+                "abstained": 1
+              },
+              {
+                "category": "low-confidence",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "malformed",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              },
+              {
+                "category": "negation",
+                "total": 2,
+                "correct": 1,
+                "abstained": 1
+              },
+              {
+                "category": "out-of-distribution",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "priority",
+                "total": 3,
+                "correct": 3,
+                "abstained": 0
+              },
+              {
+                "category": "routine",
+                "total": 3,
+                "correct": 2,
+                "abstained": 1
+              },
+              {
+                "category": "unusual-wording",
+                "total": 2,
+                "correct": 1,
+                "abstained": 1
+              }
+            ]
+          },
+          "failures": [
+            {
+              "scenarioId": "val-routine-03",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "confidence": 0.697,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1182
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.335
+                },
+                {
+                  "label": "routine",
+                  "score": 0.5468
+                }
+              ],
+              "note": "Synthetic note: mobility unchanged since the previous assessment. Walks unaided to the dining room without shortness of breath.",
+              "errorCategory": "routine",
+              "failureMode": "unexpected-abstention",
+              "response": "Lower the abstention threshold for high-signal scenarios and re-check calibration."
+            },
+            {
+              "scenarioId": "val-followup-02",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "routine",
+              "confidence": 0.3061,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.3793
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.1948
+                },
+                {
+                  "label": "routine",
+                  "score": 0.4259
+                }
+              ],
+              "note": "Synthetic note: dressing on the left shin is soiled and needs changing. The wound is not infected but the dressing must be reviewed tomorrow.",
+              "errorCategory": "follow-up",
+              "failureMode": "unexpected-abstention",
+              "response": "Lower the abstention threshold for high-signal scenarios and re-check calibration."
+            },
+            {
+              "scenarioId": "val-negation-01",
+              "category": "negation",
+              "expected": "routine",
+              "predicted": "routine",
+              "confidence": 0.7099,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.3789
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.034
+                },
+                {
+                  "label": "routine",
+                  "score": 0.5871
+                }
+              ],
+              "note": "Synthetic note: resident denies any shortness of breath on the stairs. Breathing is comfortable at rest and the chest is clear.",
+              "errorCategory": "negation",
+              "failureMode": "unexpected-abstention",
+              "response": "Lower the abstention threshold for high-signal scenarios and re-check calibration."
+            },
+            {
+              "scenarioId": "val-unusual-01",
+              "category": "unusual-wording",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "confidence": 0.5728,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2535
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.4591
+                },
+                {
+                  "label": "routine",
+                  "score": 0.2875
+                }
+              ],
+              "note": "Synthetic note: the son asked when Mum comes back for her check. We said we would ring the clinic and sort the booking out for her.",
+              "errorCategory": "unusual-wording",
+              "failureMode": "unexpected-abstention",
+              "response": "Lower the abstention threshold for high-signal scenarios and re-check calibration."
+            }
+          ],
+          "records": [
+            {
+              "scenarioId": "val-routine-01",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.8232,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1411
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.2126
+                },
+                {
+                  "label": "routine",
+                  "score": 0.6463
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 40,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: blood sugar readings within the target range all week. Insulin dose unchanged and the resident reports feeling well."
+            },
+            {
+              "scenarioId": "val-routine-02",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.8654,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.041
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.2282
+                },
+                {
+                  "label": "routine",
+                  "score": 0.7308
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 32,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: podiatry check completed, toenails trimmed and no concerns raised. Nothing outstanding for the care team."
+            },
+            {
+              "scenarioId": "val-routine-03",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0.697,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1182
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.335
+                },
+                {
+                  "label": "routine",
+                  "score": 0.5468
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: mobility unchanged since the previous assessment. Walks unaided to the dining room without shortness of breath."
+            },
+            {
+              "scenarioId": "val-followup-01",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.7731,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2943
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.5461
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1596
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 36,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident reports light-headedness when standing after the antihypertensive dose was adjusted. Repeat postural readings arranged for next week."
+            },
+            {
+              "scenarioId": "val-followup-02",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0.3061,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.3793
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.1948
+                },
+                {
+                  "label": "routine",
+                  "score": 0.4259
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 35,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: dressing on the left shin is soiled and needs changing. The wound is not infected but the dressing must be reviewed tomorrow."
+            },
+            {
+              "scenarioId": "val-followup-03",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.8232,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1323
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.6464
+                },
+                {
+                  "label": "routine",
+                  "score": 0.2213
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 31,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: hearing aid batteries replaced. An annual hearing check still needs booking with the audiology team."
+            },
+            {
+              "scenarioId": "val-priority-01",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.7835,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.567
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.1346
+                },
+                {
+                  "label": "routine",
+                  "score": 0.2984
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 32,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: facial droop noticed at breakfast with weakness down the right arm. Stroke pathway activated and the resident is being seen immediately."
+            },
+            {
+              "scenarioId": "val-priority-02",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9708,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9415
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0531
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0054
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 42,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: oxygen saturation dropped to 88% during the night with increasing work of breathing. Urgent medical review requested this morning."
+            },
+            {
+              "scenarioId": "val-priority-03",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.8863,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.7727
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.1971
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0302
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 34,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: uncontrolled bleeding from a grazed knee that did not stop after ten minutes of pressure. Immediate clinician attention required."
+            },
+            {
+              "scenarioId": "val-negation-01",
+              "category": "negation",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": true,
+              "confidence": 0.7099,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.3789
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.034
+                },
+                {
+                  "label": "routine",
+                  "score": 0.5871
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 30,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident denies any shortness of breath on the stairs. Breathing is comfortable at rest and the chest is clear."
+            },
+            {
+              "scenarioId": "val-negation-02",
+              "category": "negation",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.8112,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.3072
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.6223
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0705
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 29,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident denies falls since the last visit. Medication review still to be arranged by the pharmacist."
+            },
+            {
+              "scenarioId": "val-abbrev-01",
+              "category": "abbreviation",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.8921,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1817
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.7841
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0341
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 33,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: pt c/o dizziness w/ postural changes. f/u w/ pharmacist requested, Rx review pending."
+            },
+            {
+              "scenarioId": "val-abbrev-02",
+              "category": "abbreviation",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9129,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.8258
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0604
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1138
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 33,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: pt found on floor 0600, A&O x2, RR 30, hypoxic. MD review STAT."
+            },
+            {
+              "scenarioId": "val-contradictory-01",
+              "category": "contradictory",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9579,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9158
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0389
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0452
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 34,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: observations are unremarkable and temperature is normal. However the resident is confused and has collapsed twice today, requiring urgent assessment."
+            },
+            {
+              "scenarioId": "val-unusual-01",
+              "category": "unusual-wording",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.5728,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2535
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.4591
+                },
+                {
+                  "label": "routine",
+                  "score": 0.2875
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 34,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: the son asked when Mum comes back for her check. We said we would ring the clinic and sort the booking out for her."
+            },
+            {
+              "scenarioId": "val-unusual-02",
+              "category": "unusual-wording",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9649,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9299
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0159
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0542
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 32,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: the resident was slurring her words and could not get her breath, so the nurse called the doctor straight away."
+            },
+            {
+              "scenarioId": "val-ood-01",
+              "category": "out-of-distribution",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.6263,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.3716
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.5478
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0806
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 31,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "out-of-distribution",
+              "note": "Synthetic note: the fire drill is scheduled for Tuesday. The laundry room key needs replacing before then."
+            },
+            {
+              "scenarioId": "val-ood-02",
+              "category": "out-of-distribution",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.4249,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2542
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.4259
+                },
+                {
+                  "label": "routine",
+                  "score": 0.3199
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 29,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "out-of-distribution",
+              "note": "Synthetic note: the quarterly catering invoice was approved. The new laptop arrives on Thursday."
+            },
+            {
+              "scenarioId": "val-lowconf-01",
+              "category": "low-confidence",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.2079,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2495
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.3797
+                },
+                {
+                  "label": "routine",
+                  "score": 0.3707
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: noted."
+            },
+            {
+              "scenarioId": "val-lowconf-02",
+              "category": "low-confidence",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.7918,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2876
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.5837
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1287
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 27,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: ring back later please."
+            },
+            {
+              "scenarioId": "val-malformed-01",
+              "category": "malformed",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.9417,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0831
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.8834
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0336
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 28,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: Â€” prescription renewal pending, due in five days."
+            },
+            {
+              "scenarioId": "val-malformed-02",
+              "category": "malformed",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9818,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9635
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0243
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0123
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
+              "latencyMs": 29,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: {{{ urgent !!! resident acutely unwell ??? same-day review needed"
+            }
+          ]
+        },
+        {
+          "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+          "durationMs": 721,
+          "metrics": {
+            "total": 22,
+            "completed": 22,
+            "failed": 0,
+            "accuracy": 0.7727,
+            "selectiveAccuracy": 1,
+            "macroF1": 0.8614,
+            "perClass": [
+              {
+                "label": "priority",
+                "support": 7,
+                "truePositives": 7,
+                "falsePositives": 0,
+                "falseNegatives": 0,
+                "precision": 1,
+                "recall": 1,
+                "f1": 1
+              },
+              {
+                "label": "follow-up",
+                "support": 6,
+                "truePositives": 6,
+                "falsePositives": 0,
+                "falseNegatives": 2,
+                "precision": 1,
+                "recall": 0.75,
+                "f1": 0.8571
+              },
+              {
+                "label": "routine",
+                "support": 4,
+                "truePositives": 4,
+                "falsePositives": 0,
+                "falseNegatives": 3,
+                "precision": 1,
+                "recall": 0.5714,
+                "f1": 0.7272
+              }
+            ],
+            "confusionMatrix": [
+              {
+                "expected": "priority",
+                "predicted": "priority",
+                "count": 7
+              },
+              {
+                "expected": "priority",
+                "predicted": "follow-up",
+                "count": 0
+              },
+              {
+                "expected": "priority",
+                "predicted": "routine",
+                "count": 0
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "priority",
+                "count": 0
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "follow-up",
+                "count": 6
+              },
+              {
+                "expected": "follow-up",
+                "predicted": "routine",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "priority",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "follow-up",
+                "count": 0
+              },
+              {
+                "expected": "routine",
+                "predicted": "routine",
+                "count": 4
+              }
+            ],
+            "coverage": 0.7727,
+            "abstentionRate": 0.2273,
+            "fallbackRate": 0,
+            "latency": {
+              "count": 22,
+              "min": 25,
+              "max": 42,
+              "mean": 32.7727,
+              "median": 32,
+              "p95": 40
+            },
+            "byCategory": [
+              {
+                "category": "abbreviation",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              },
+              {
+                "category": "contradictory",
+                "total": 1,
+                "correct": 1,
+                "abstained": 0
+              },
+              {
+                "category": "follow-up",
+                "total": 3,
+                "correct": 2,
+                "abstained": 1
+              },
+              {
+                "category": "low-confidence",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "malformed",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              },
+              {
+                "category": "negation",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              },
+              {
+                "category": "out-of-distribution",
+                "total": 2,
+                "correct": 0,
+                "abstained": 2
+              },
+              {
+                "category": "priority",
+                "total": 3,
+                "correct": 3,
+                "abstained": 0
+              },
+              {
+                "category": "routine",
+                "total": 3,
+                "correct": 3,
+                "abstained": 0
+              },
+              {
+                "category": "unusual-wording",
+                "total": 2,
+                "correct": 2,
+                "abstained": 0
+              }
+            ]
+          },
+          "failures": [
+            {
+              "scenarioId": "val-followup-02",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2276
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.4743
+                },
+                {
+                  "label": "routine",
+                  "score": 0.2981
+                }
+              ],
+              "note": "Synthetic note: dressing on the left shin is soiled and needs changing. The wound is not infected but the dressing must be reviewed tomorrow.",
+              "errorCategory": "follow-up",
+              "failureMode": "unexpected-abstention",
+              "response": "Lower the abstention threshold for high-signal scenarios and re-check calibration."
+            }
+          ],
+          "records": [
+            {
+              "scenarioId": "val-routine-01",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.9316,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0847
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.1276
+                },
+                {
+                  "label": "routine",
+                  "score": 0.7878
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 40,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: blood sugar readings within the target range all week. Insulin dose unchanged and the resident reports feeling well."
+            },
+            {
+              "scenarioId": "val-routine-02",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.9827,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0246
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.1369
+                },
+                {
+                  "label": "routine",
+                  "score": 0.8385
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 31,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: podiatry check completed, toenails trimmed and no concerns raised. Nothing outstanding for the care team."
+            },
+            {
+              "scenarioId": "val-routine-03",
+              "category": "routine",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.8085,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0709
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.201
+                },
+                {
+                  "label": "routine",
+                  "score": 0.7281
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 31,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: mobility unchanged since the previous assessment. Walks unaided to the dining room without shortness of breath."
+            },
+            {
+              "scenarioId": "val-followup-01",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.9365,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1766
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.7277
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0958
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 38,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident reports light-headedness when standing after the antihypertensive dose was adjusted. Repeat postural readings arranged for next week."
+            },
+            {
+              "scenarioId": "val-followup-02",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2276
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.4743
+                },
+                {
+                  "label": "routine",
+                  "score": 0.2981
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 35,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: dressing on the left shin is soiled and needs changing. The wound is not infected but the dressing must be reviewed tomorrow."
+            },
+            {
+              "scenarioId": "val-followup-03",
+              "category": "follow-up",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.9616,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0794
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.7453
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1753
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 29,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: hearing aid batteries replaced. An annual hearing check still needs booking with the audiology team."
+            },
+            {
+              "scenarioId": "val-priority-01",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9417,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.7402
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0808
+                },
+                {
+                  "label": "routine",
+                  "score": 0.179
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 36,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: facial droop noticed at breakfast with weakness down the right arm. Stroke pathway activated and the resident is being seen immediately."
+            },
+            {
+              "scenarioId": "val-priority-02",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9649
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0319
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0032
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 42,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: oxygen saturation dropped to 88% during the night with increasing work of breathing. Urgent medical review requested this morning."
+            },
+            {
+              "scenarioId": "val-priority-03",
+              "category": "priority",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9831,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.8636
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.1183
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0181
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 36,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: uncontrolled bleeding from a grazed knee that did not stop after ten minutes of pressure. Immediate clinician attention required."
+            },
+            {
+              "scenarioId": "val-negation-01",
+              "category": "negation",
+              "expected": "routine",
+              "predicted": "routine",
+              "abstained": false,
+              "confidence": 0.8149,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.2273
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0204
+                },
+                {
+                  "label": "routine",
+                  "score": 0.7523
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 32,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident denies any shortness of breath on the stairs. Breathing is comfortable at rest and the chest is clear."
+            },
+            {
+              "scenarioId": "val-negation-02",
+              "category": "negation",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.9556,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1843
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.7734
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0423
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 30,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: resident denies falls since the last visit. Medication review still to be arranged by the pharmacist."
+            },
+            {
+              "scenarioId": "val-abbrev-01",
+              "category": "abbreviation",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.946,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.109
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.8705
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0205
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 35,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: pt c/o dizziness w/ postural changes. f/u w/ pharmacist requested, Rx review pending."
+            },
+            {
+              "scenarioId": "val-abbrev-02",
+              "category": "abbreviation",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.8955
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0362
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0683
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 33,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: pt found on floor 0600, A&O x2, RR 30, hypoxic. MD review STAT."
+            },
+            {
+              "scenarioId": "val-contradictory-01",
+              "category": "contradictory",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9789,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.8161
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0233
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1605
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 36,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: observations are unremarkable and temperature is normal. However the resident is confused and has collapsed twice today, requiring urgent assessment."
+            },
+            {
+              "scenarioId": "val-unusual-01",
+              "category": "unusual-wording",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.8064,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1521
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.6755
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1725
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 34,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: the son asked when Mum comes back for her check. We said we would ring the clinic and sort the booking out for her."
+            },
+            {
+              "scenarioId": "val-unusual-02",
+              "category": "unusual-wording",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.9424,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9579
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0095
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0325
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 32,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: the resident was slurring her words and could not get her breath, so the nurse called the doctor straight away."
+            },
+            {
+              "scenarioId": "val-ood-01",
+              "category": "out-of-distribution",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0.8131,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.223
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.7287
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0484
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 31,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "out-of-distribution",
+              "note": "Synthetic note: the fire drill is scheduled for Tuesday. The laundry room key needs replacing before then."
+            },
+            {
+              "scenarioId": "val-ood-02",
+              "category": "out-of-distribution",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1525
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.2555
+                },
+                {
+                  "label": "routine",
+                  "score": 0.1919
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 31,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "out-of-distribution",
+              "note": "Synthetic note: the quarterly catering invoice was approved. The new laptop arrives on Thursday."
+            },
+            {
+              "scenarioId": "val-lowconf-01",
+              "category": "low-confidence",
+              "expected": "routine",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1497
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.2278
+                },
+                {
+                  "label": "routine",
+                  "score": 0.2224
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 25,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: noted."
+            },
+            {
+              "scenarioId": "val-lowconf-02",
+              "category": "low-confidence",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": true,
+              "confidence": 0,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.1726
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.3502
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0772
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 27,
+              "usedFallback": false,
+              "failed": false,
+              "errorCategory": "low-information",
+              "note": "Synthetic note: ring back later please."
+            },
+            {
+              "scenarioId": "val-malformed-01",
+              "category": "malformed",
+              "expected": "follow-up",
+              "predicted": "follow-up",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.0499
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.93
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0202
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 30,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: Â€” prescription renewal pending, due in five days."
+            },
+            {
+              "scenarioId": "val-malformed-02",
+              "category": "malformed",
+              "expected": "priority",
+              "predicted": "priority",
+              "abstained": false,
+              "confidence": 0.99,
+              "scores": [
+                {
+                  "label": "priority",
+                  "score": 0.9781
+                },
+                {
+                  "label": "follow-up",
+                  "score": 0.0146
+                },
+                {
+                  "label": "routine",
+                  "score": 0.0074
+                }
+              ],
+              "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
+              "latencyMs": 27,
+              "usedFallback": false,
+              "failed": false,
+              "note": "Synthetic note: {{{ urgent !!! resident acutely unwell ??? same-day review needed"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

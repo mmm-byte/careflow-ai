@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+    branches: ['main', 'master']
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Format, lint, typecheck, test, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.11'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Production build
+        run: npm run build
+
+  evaluation:
+    name: Reproducible evaluation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.11'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run the evaluation suites
+        # The model weights are fetched from the Hugging Face CDN on first use.
+        env:
+          NODE_USE_ENV_PROXY: '1'
+        run: npm run evaluate
+
+      - name: Fail if the evaluation report is out of date
+        # A change to the AI layer must be accompanied by a regenerated report,
+        # so the measured behaviour cannot shift silently.
+        run: |
+          if [ -n "$(git status --porcelain reports/evaluation.json)" ]; then
+            echo "::error::reports/evaluation.json is out of date. Run 'npm run evaluate' and commit the result."
+            git --no-pager diff --stat reports/evaluation.json
+            exit 1
+          fi
+
+      - name: Upload the evaluation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: evaluation-report
+          path: reports/evaluation.json
+          if-no-files-found: error

@@ -1,0 +1,39 @@
+{
+  "name": "careflow-ai",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Privacy-conscious, browser-inference care-operations copilot for senior-care workflows (FHIR R4, synthetic data).",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.{ts,mjs}\" \"*.{md,mjs,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.{ts,mjs}\" \"*.{md,mjs,json}\"",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --experimental-strip-types \"src/**/*.test.ts\"",
+    "evaluate": "node --experimental-strip-types scripts/run-evaluation.ts",
+    "generate:dataset": "node --experimental-strip-types scripts/generate-dataset.ts",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.8.1",
+    "lucide-react": "^0.468.0",
+    "next": "^15.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^15.5.29",
+    "prettier": "^3.10.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.7.0"
+  }
+}
