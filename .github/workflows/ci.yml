@@ -75,6 +75,18 @@ jobs:
           NODE_USE_ENV_PROXY: '1'
         run: npm run evaluate -- --out=reports/evaluation.fresh.json
 
+      - name: Upload the evaluation report
+        # Uploaded before the gate so the fresh report is available for
+        # inspection even when the gate fails.
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evaluation-report
+          path: |
+            reports/evaluation.json
+            reports/evaluation.fresh.json
+          if-no-files-found: error
+
       - name: Fail if the evaluation behaviour changed
         # A change to the AI layer must be accompanied by a regenerated report,
         # so the measured behaviour cannot shift silently.
@@ -86,12 +98,3 @@ jobs:
         env:
           NODE_USE_ENV_PROXY: '1'
         run: npm run evaluate:check
-
-      - name: Upload the evaluation report
-        uses: actions/upload-artifact@v4
-        with:
-          name: evaluation-report
-          path: |
-            reports/evaluation.json
-            reports/evaluation.fresh.json
-          if-no-files-found: error
