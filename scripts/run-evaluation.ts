@@ -17,14 +17,20 @@
  *  - **held-out** (`src/lib/eval/validation.ts`) - written after the
  *    architecture was fixed and never used for tuning. These are the numbers
  *    that say whether the system actually generalizes.
+ *
+ * With `--out=<path>` the report is written somewhere other than the
+ * committed `reports/evaluation.json`. CI uses this to produce a fresh report
+ * for comparison without touching the committed artefact.
+ *
+ * The regression gate that compares a fresh run against the committed report
+ * lives in `scripts/compare-evaluation.ts`.
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { createEnsembleEngine, createRulesEngine, runEvaluation } from '../src/lib/eval/runner.ts';
-import { EVALUATION_SCENARIOS } from '../src/lib/eval/scenarios.ts';
-import { VALIDATION_SCENARIOS } from '../src/lib/eval/validation.ts';
+import { EVALUATION_SUITES } from '../src/lib/eval/suites.ts';
 import { createNodeModelEngine } from './node-model-engine.ts';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -34,6 +40,7 @@ const args = process.argv.slice(2);
 const engineArg = args.find((arg) => arg.startsWith('--engine='))?.split('=')[1] ?? 'all';
 const suiteArg = args.find((arg) => arg.startsWith('--suite='))?.split('=')[1] ?? 'all';
 const asJson = args.includes('--json');
+const outArg = args.find((arg) => arg.startsWith('--out='))?.split('=')[1];
 
 function percent(value: number): string {
   return `${(value * 100).toFixed(1)}%`;
@@ -47,29 +54,10 @@ function padStart(value: string, width: number): string {
   return value.padStart(width);
 }
 
-interface SuiteSpec {
-  id: 'tuning' | 'validation';
-  title: string;
-  scenarios: typeof EVALUATION_SCENARIOS;
-}
-
-const SUITES: SuiteSpec[] = [
-  {
-    id: 'tuning',
-    title: 'Tuning suite (used to choose the threshold and prototypes)',
-    scenarios: EVALUATION_SCENARIOS,
-  },
-  {
-    id: 'validation',
-    title: 'Held-out validation suite (never used for tuning)',
-    scenarios: VALIDATION_SCENARIOS,
-  },
-];
-
 const selectedSuites =
   suiteArg === 'all'
-    ? SUITES
-    : SUITES.filter((suite) => suite.id === suiteArg || suite.id === 'tuning');
+    ? EVALUATION_SUITES
+    : EVALUATION_SUITES.filter((suite) => suite.id === suiteArg || suite.id === 'tuning');
 
 if (selectedSuites.length === 0) {
   process.stderr.write('Unknown suite. Use --suite=tuning|validation|all.\n');
@@ -77,7 +65,7 @@ if (selectedSuites.length === 0) {
 }
 
 const suiteRuns: {
-  suite: SuiteSpec;
+  suite: (typeof EVALUATION_SUITES)[number];
   runs: Awaited<ReturnType<typeof runEvaluation>>[];
 }[] = [];
 
@@ -146,15 +134,16 @@ const report = {
   })),
 };
 
-mkdirSync(dirname(reportPath), { recursive: true });
-writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
+const outputPath = outArg ? resolve(here, '..', outArg) : reportPath;
+mkdirSync(dirname(outputPath), { recursive: true });
+writeFileSync(outputPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
 
 if (asJson) {
   console.log(JSON.stringify(report, null, 2));
 } else {
   console.log('');
   console.log('CareFlow AI - reproducible evaluation');
-  console.log(`Report written to ${reportPath}`);
+  console.log(`Report written to ${outputPath}`);
 
   for (const { suite, runs } of suiteRuns) {
     console.log('');

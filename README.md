@@ -366,10 +366,17 @@ npm run evaluate                       # both suites, all three engines
 npm run evaluate -- --suite=validation # one suite
 npm run evaluate -- --engine=ensemble  # one engine
 npm run evaluate -- --json             # machine-readable output
+npm run evaluate:check                 # compare a fresh run against the committed report
 ```
 
 The run writes [`reports/evaluation.json`](reports/evaluation.json), which is committed so every
 number quoted in this repository is verifiable.
+
+CI runs the same evaluation on every push and fails when the **behaviour** changes: a different
+predicted label, a different abstention, a different fallback, or a confidence that moved by
+more than `1e-3`. Wall-clock fields (timestamps, latency) are deliberately excluded, because
+they change on every run and a plain file diff would always report a difference. The gate
+therefore fails on a genuine regression and stays quiet when only the clock moved.
 
 ## Measured results
 
@@ -507,6 +514,15 @@ Two things to know about the deployed build:
 - **The build is a static export**, so the deployment is a CDN of files. There is no server
   runtime, which means no cold starts and no server cost.
 
+The repository also carries an `.npmrc` that sets `onnxruntime-node-install-cuda=skip`. The
+`onnxruntime-node` package downloads optional CUDA execution-provider binaries on Linux x64, and
+the upstream URL for the pinned version returns `404`, which breaks `npm ci` on every Linux x64
+machine — including Vercel's build containers and GitHub Actions runners. The CPU binaries are
+bundled inside the package and this project never uses CUDA, so skipping the download is correct
+and keeps the install reproducible. `vercel.json` sets the same thing as a build environment
+variable, which is the form that does not depend on npm's handling of unknown project config
+keys.
+
 ### All scripts
 
 | Script                     | Purpose                                                                                            |
@@ -521,6 +537,7 @@ Two things to know about the deployed build:
 | `npm run typecheck`        | `tsc --noEmit`                                                                                     |
 | `npm test`                 | Unit tests (`node --test`)                                                                         |
 | `npm run evaluate`         | Reproducible evaluation; writes `reports/evaluation.json`                                          |
+| `npm run evaluate:check`   | Regression gate: fail if a fresh run's behaviour differs from the committed report                 |
 | `npm run generate:dataset` | Regenerate the synthetic FHIR bundle                                                               |
 | `npm run check`            | Format → lint → typecheck → test → build                                                           |
 
@@ -532,7 +549,7 @@ Model Lab explains what changed. Set `NODE_USE_ENV_PROXY=1` if you are behind a 
 
 ## Testing
 
-**72 unit tests**, run with the Node built-in test runner — no test framework dependency.
+**86 unit tests**, run with the Node built-in test runner — no test framework dependency.
 
 ```
 npm test

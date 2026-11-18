@@ -17,7 +17,8 @@
     "test": "node --test --experimental-strip-types \"src/**/*.test.ts\"",
     "evaluate": "node --experimental-strip-types scripts/run-evaluation.ts",
     "generate:dataset": "node --experimental-strip-types scripts/generate-dataset.ts",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build",
+    "evaluate:check": "node --experimental-strip-types scripts/compare-evaluation.ts"
   },
   "dependencies": {
     "@huggingface/transformers": "^3.8.1",
@@ -35,5 +36,8 @@
     "prettier": "^3.10.1",
     "tsx": "^4.23.15",
     "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=20.11"
   }
 }

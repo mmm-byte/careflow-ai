@@ -6,6 +6,11 @@
   "installCommand": "npm ci",
   "cleanUrls": true,
   "trailingSlash": false,
+  "build": {
+    "env": {
+      "ONNXRUNTIME_NODE_INSTALL_CUDA": "skip"
+    }
+  },
   "headers": [
     {
       "source": "/_next/static/(.*)",

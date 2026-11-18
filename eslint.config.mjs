@@ -10,7 +10,7 @@ const compat = new FlatCompat({
   recommendedConfig: undefined,
 });
 
-export default [
+const config = [
   {
     ignores: ['.next/**', 'out/**', 'node_modules/**', 'next-env.d.ts'],
   },
@@ -30,4 +30,12 @@ export default [
     files: ['**/*.test.ts', '**/*.test.tsx'],
     rules: { 'no-console': 'off' },
   },
+  {
+    // Command line scripts report their progress on stdout and their errors on
+    // stderr. Console output is the intended interface for these files.
+    files: ['scripts/**/*.ts'],
+    rules: { 'no-console': 'off' },
+  },
 ];
+
+export default config;

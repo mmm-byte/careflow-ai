@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T05:11:09.410Z",
+  "generatedAt": "2026-11-18T06:21:33.328Z",
   "suites": [
     {
       "suite": "tuning",
@@ -8,7 +8,7 @@
       "runs": [
         {
           "engine": "rules",
-          "durationMs": 11,
+          "durationMs": 9,
           "metrics": {
             "total": 30,
             "completed": 30,
@@ -102,9 +102,9 @@
               "count": 30,
               "min": 0,
               "max": 3,
-              "mean": 0.3,
+              "mean": 0.2667,
               "median": 0,
-              "p95": 1
+              "p95": 2
             },
             "byCategory": [
               {
@@ -285,7 +285,7 @@
                 }
               ],
               "engine": "rules",
-              "latencyMs": 1,
+              "latencyMs": 0,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: chronic condition unchanged from last month. Regular review only, nothing outstanding."
@@ -312,7 +312,7 @@
                 }
               ],
               "engine": "rules",
-              "latencyMs": 0,
+              "latencyMs": 1,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident reports dizziness after medication change; follow-up scheduling requested within seven days."
@@ -393,7 +393,7 @@
                 }
               ],
               "engine": "rules",
-              "latencyMs": 1,
+              "latencyMs": 0,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: monitoring plan remains open. Care team to review readings and arrange the next appointment."
@@ -420,7 +420,7 @@
                 }
               ],
               "engine": "rules",
-              "latencyMs": 0,
+              "latencyMs": 1,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident found on floor in the early morning. Appears acutely unwell and short of breath on exertion. Escalated for urgent clinician assessment this morning."
@@ -474,7 +474,7 @@
                 }
               ],
               "engine": "rules",
-              "latencyMs": 1,
+              "latencyMs": 0,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: new acute confusion observed this evening with slurred speech. Emergency assessment required."
@@ -555,7 +555,7 @@
                 }
               ],
               "engine": "rules",
-              "latencyMs": 1,
+              "latencyMs": 0,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident denies dizziness, denies falls and reports no concerns today. Prescription renewal to be arranged within seven days."
@@ -582,7 +582,7 @@
                 }
               ],
               "engine": "rules",
-              "latencyMs": 0,
+              "latencyMs": 1,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: chest pain ruled out. Symptoms stable and unchanged since the previous visit."
@@ -690,7 +690,7 @@
                 }
               ],
               "engine": "rules",
-              "latencyMs": 1,
+              "latencyMs": 0,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident stable, no acute concerns. Care-plan activity remains open and follow-up scheduling is requested."
@@ -1022,7 +1022,7 @@
                 }
               ],
               "engine": "rules",
-              "latencyMs": 1,
+              "latencyMs": 2,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: Â£Â£ urgent Â€” resident acutely unwell, please review immediately."
@@ -1031,7 +1031,7 @@
         },
         {
           "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-          "durationMs": 1023,
+          "durationMs": 1420,
           "metrics": {
             "total": 30,
             "completed": 30,
@@ -1123,11 +1123,11 @@
             "fallbackRate": 0,
             "latency": {
               "count": 30,
-              "min": 27,
-              "max": 69,
-              "mean": 34.0333,
-              "median": 31,
-              "p95": 49
+              "min": 26,
+              "max": 171,
+              "mean": 47.3333,
+              "median": 40,
+              "p95": 85
             },
             "byCategory": [
               {
@@ -1304,7 +1304,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 36,
+              "latencyMs": 42,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: annual wellness visit completed. Resident is stable and no concerns reported today."
@@ -1331,7 +1331,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 36,
+              "latencyMs": 45,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: routine blood work returned normal results. Standard preventive care continues."
@@ -1358,7 +1358,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 32,
+              "latencyMs": 70,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: chronic condition unchanged from last month. Regular review only, nothing outstanding."
@@ -1385,7 +1385,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 48,
+              "latencyMs": 171,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident reports dizziness after medication change; follow-up scheduling requested within seven days."
@@ -1412,7 +1412,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 46,
+              "latencyMs": 53,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: wound site dry and intact, no erythema. Suture removal due in ten days; scheduling assistance requested."
@@ -1439,7 +1439,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 28,
+              "latencyMs": 33,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: prescription renewal to be arranged by the pharmacy team within seven days."
@@ -1466,7 +1466,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 32,
+              "latencyMs": 39,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: monitoring plan remains open. Care team to review readings and arrange the next appointment."
@@ -1493,7 +1493,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 69,
+              "latencyMs": 85,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident found on floor in the early morning. Appears acutely unwell and short of breath on exertion. Escalated for urgent clinician assessment this morning."
@@ -1520,7 +1520,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 49,
+              "latencyMs": 70,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident reports a mild headache this morning and blood pressure measured markedly elevated at 164/88. Same-day clinician review requested."
@@ -1547,7 +1547,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 29,
+              "latencyMs": 36,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: new acute confusion observed this evening with slurred speech. Emergency assessment required."
@@ -1574,7 +1574,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 31,
+              "latencyMs": 53,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident reports chest pain on exertion, worsening over the past hour. Same-day urgent review needed."
@@ -1601,7 +1601,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 31,
+              "latencyMs": 44,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: annual wellness visit completed. No urgent concerns. Routine care-plan review remains open."
@@ -1628,7 +1628,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 31,
+              "latencyMs": 42,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident denies dizziness, denies falls and reports no concerns today. Prescription renewal to be arranged within seven days."
@@ -1655,7 +1655,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 28,
+              "latencyMs": 35,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: chest pain ruled out. Symptoms stable and unchanged since the previous visit."
@@ -1682,7 +1682,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 47,
+              "latencyMs": 49,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: pt reports SOB w/ exertion, afib hx, f/u w/ cardiology requested, Rx renewal pending, PT/OT eval ordered."
@@ -1709,7 +1709,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 35,
+              "latencyMs": 38,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: pt found on floor at 0700. A&O x3, resp distress. MD eval STAT requested."
@@ -1736,7 +1736,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 36,
+              "latencyMs": 40,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: observations stable and within normal range. However resident reports chest pain and requires urgent assessment."
@@ -1763,7 +1763,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 28,
+              "latencyMs": 38,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident stable, no acute concerns. Care-plan activity remains open and follow-up scheduling is requested."
@@ -1790,7 +1790,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 29,
+              "latencyMs": 34,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "low-information",
@@ -1818,7 +1818,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 28,
+              "latencyMs": 33,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "low-information",
@@ -1874,7 +1874,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 27,
+              "latencyMs": 26,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "missing-data",
@@ -1902,7 +1902,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 35,
+              "latencyMs": 44,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: the family asked whether the next appointment could be moved. We said we would try to sort it out and get back to them."
@@ -1929,7 +1929,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 30,
+              "latencyMs": 40,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident was not making sense and could barely breathe, so we called the doctor straight away."
@@ -1956,7 +1956,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 30,
+              "latencyMs": 82,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "out-of-distribution",
@@ -2012,7 +2012,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 27,
+              "latencyMs": 31,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "low-information",
@@ -2040,7 +2040,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 27,
+              "latencyMs": 26,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "low-information",
@@ -2095,7 +2095,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 28,
+              "latencyMs": 33,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: Â£Â£ urgent Â€” resident acutely unwell, please review immediately."
@@ -2104,7 +2104,7 @@
         },
         {
           "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-          "durationMs": 1052,
+          "durationMs": 1104,
           "metrics": {
             "total": 30,
             "completed": 30,
@@ -2196,11 +2196,11 @@
             "fallbackRate": 0,
             "latency": {
               "count": 30,
-              "min": 26,
-              "max": 68,
-              "mean": 35.0667,
-              "median": 30,
-              "p95": 65
+              "min": 25,
+              "max": 82,
+              "mean": 36.8,
+              "median": 32,
+              "p95": 69
             },
             "byCategory": [
               {
@@ -2402,7 +2402,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 32,
+              "latencyMs": 82,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: annual wellness visit completed. Resident is stable and no concerns reported today."
@@ -2429,7 +2429,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 43,
+              "latencyMs": 39,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: routine blood work returned normal results. Standard preventive care continues."
@@ -2456,7 +2456,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 65,
+              "latencyMs": 34,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: chronic condition unchanged from last month. Regular review only, nothing outstanding."
@@ -2483,7 +2483,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 46,
+              "latencyMs": 50,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident reports dizziness after medication change; follow-up scheduling requested within seven days."
@@ -2510,7 +2510,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 46,
+              "latencyMs": 56,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: wound site dry and intact, no erythema. Suture removal due in ten days; scheduling assistance requested."
@@ -2537,7 +2537,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 28,
+              "latencyMs": 30,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: prescription renewal to be arranged by the pharmacy team within seven days."
@@ -2564,7 +2564,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 30,
+              "latencyMs": 35,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: monitoring plan remains open. Care team to review readings and arrange the next appointment."
@@ -2591,7 +2591,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 68,
+              "latencyMs": 69,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident found on floor in the early morning. Appears acutely unwell and short of breath on exertion. Escalated for urgent clinician assessment this morning."
@@ -2726,7 +2726,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 33,
+              "latencyMs": 30,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident denies dizziness, denies falls and reports no concerns today. Prescription renewal to be arranged within seven days."
@@ -2753,7 +2753,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 28,
+              "latencyMs": 33,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: chest pain ruled out. Symptoms stable and unchanged since the previous visit."
@@ -2780,7 +2780,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 47,
+              "latencyMs": 44,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: pt reports SOB w/ exertion, afib hx, f/u w/ cardiology requested, Rx renewal pending, PT/OT eval ordered."
@@ -2807,7 +2807,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 36,
+              "latencyMs": 35,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: pt found on floor at 0700. A&O x3, resp distress. MD eval STAT requested."
@@ -2834,7 +2834,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 36,
+              "latencyMs": 38,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: observations stable and within normal range. However resident reports chest pain and requires urgent assessment."
@@ -2944,7 +2944,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 26,
+              "latencyMs": 25,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "missing-data",
@@ -3027,7 +3027,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 29,
+              "latencyMs": 28,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident was not making sense and could barely breathe, so we called the doctor straight away."
@@ -3054,7 +3054,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 30,
+              "latencyMs": 31,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "out-of-distribution",
@@ -3138,7 +3138,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 26,
+              "latencyMs": 36,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "low-information",
@@ -3166,7 +3166,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 28,
+              "latencyMs": 31,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: {{{ resident ))) stable ?? no urgent concerns <<< review pending"
@@ -3193,7 +3193,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 29,
+              "latencyMs": 32,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: Â£Â£ urgent Â€” resident acutely unwell, please review immediately."
@@ -3303,7 +3303,7 @@
               "count": 22,
               "min": 0,
               "max": 1,
-              "mean": 0.1364,
+              "mean": 0.0909,
               "median": 0,
               "p95": 1
             },
@@ -3745,7 +3745,7 @@
                 }
               ],
               "engine": "rules",
-              "latencyMs": 1,
+              "latencyMs": 0,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: observations are unremarkable and temperature is normal. However the resident is confused and has collapsed twice today, requiring urgent assessment."
@@ -3974,7 +3974,7 @@
         },
         {
           "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-          "durationMs": 708,
+          "durationMs": 739,
           "metrics": {
             "total": 22,
             "completed": 22,
@@ -4066,11 +4066,11 @@
             "fallbackRate": 0,
             "latency": {
               "count": 22,
-              "min": 27,
-              "max": 42,
-              "mean": 32.1364,
-              "median": 32,
-              "p95": 40
+              "min": 26,
+              "max": 48,
+              "mean": 33.5455,
+              "median": 33,
+              "p95": 42
             },
             "byCategory": [
               {
@@ -4260,7 +4260,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 40,
+              "latencyMs": 42,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: blood sugar readings within the target range all week. Insulin dose unchanged and the resident reports feeling well."
@@ -4287,7 +4287,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 32,
+              "latencyMs": 33,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: podiatry check completed, toenails trimmed and no concerns raised. Nothing outstanding for the care team."
@@ -4314,7 +4314,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 28,
+              "latencyMs": 31,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: mobility unchanged since the previous assessment. Walks unaided to the dining room without shortness of breath."
@@ -4341,7 +4341,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 36,
+              "latencyMs": 39,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident reports light-headedness when standing after the antihypertensive dose was adjusted. Repeat postural readings arranged for next week."
@@ -4368,7 +4368,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 35,
+              "latencyMs": 36,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: dressing on the left shin is soiled and needs changing. The wound is not infected but the dressing must be reviewed tomorrow."
@@ -4395,7 +4395,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 31,
+              "latencyMs": 32,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: hearing aid batteries replaced. An annual hearing check still needs booking with the audiology team."
@@ -4422,7 +4422,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 32,
+              "latencyMs": 35,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: facial droop noticed at breakfast with weakness down the right arm. Stroke pathway activated and the resident is being seen immediately."
@@ -4449,7 +4449,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 42,
+              "latencyMs": 48,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: oxygen saturation dropped to 88% during the night with increasing work of breathing. Urgent medical review requested this morning."
@@ -4476,7 +4476,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 34,
+              "latencyMs": 35,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: uncontrolled bleeding from a grazed knee that did not stop after ten minutes of pressure. Immediate clinician attention required."
@@ -4503,7 +4503,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 30,
+              "latencyMs": 31,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident denies any shortness of breath on the stairs. Breathing is comfortable at rest and the chest is clear."
@@ -4530,7 +4530,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 29,
+              "latencyMs": 30,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident denies falls since the last visit. Medication review still to be arranged by the pharmacist."
@@ -4557,7 +4557,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 33,
+              "latencyMs": 34,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: pt c/o dizziness w/ postural changes. f/u w/ pharmacist requested, Rx review pending."
@@ -4611,7 +4611,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 34,
+              "latencyMs": 39,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: observations are unremarkable and temperature is normal. However the resident is confused and has collapsed twice today, requiring urgent assessment."
@@ -4638,7 +4638,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 34,
+              "latencyMs": 35,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: the son asked when Mum comes back for her check. We said we would ring the clinic and sort the booking out for her."
@@ -4692,7 +4692,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 31,
+              "latencyMs": 33,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "out-of-distribution",
@@ -4720,7 +4720,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 29,
+              "latencyMs": 32,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "out-of-distribution",
@@ -4748,7 +4748,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 28,
+              "latencyMs": 26,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "low-information",
@@ -4831,7 +4831,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8)",
-              "latencyMs": 29,
+              "latencyMs": 27,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: {{{ urgent !!! resident acutely unwell ??? same-day review needed"
@@ -4840,7 +4840,7 @@
         },
         {
           "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-          "durationMs": 721,
+          "durationMs": 794,
           "metrics": {
             "total": 22,
             "completed": 22,
@@ -4932,11 +4932,11 @@
             "fallbackRate": 0,
             "latency": {
               "count": 22,
-              "min": 25,
-              "max": 42,
-              "mean": 32.7727,
-              "median": 32,
-              "p95": 40
+              "min": 26,
+              "max": 52,
+              "mean": 36.0909,
+              "median": 36,
+              "p95": 48
             },
             "byCategory": [
               {
@@ -5051,7 +5051,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 40,
+              "latencyMs": 41,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: blood sugar readings within the target range all week. Insulin dose unchanged and the resident reports feeling well."
@@ -5078,7 +5078,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 31,
+              "latencyMs": 32,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: podiatry check completed, toenails trimmed and no concerns raised. Nothing outstanding for the care team."
@@ -5132,7 +5132,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 38,
+              "latencyMs": 40,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident reports light-headedness when standing after the antihypertensive dose was adjusted. Repeat postural readings arranged for next week."
@@ -5159,7 +5159,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 35,
+              "latencyMs": 48,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: dressing on the left shin is soiled and needs changing. The wound is not infected but the dressing must be reviewed tomorrow."
@@ -5186,7 +5186,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 29,
+              "latencyMs": 35,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: hearing aid batteries replaced. An annual hearing check still needs booking with the audiology team."
@@ -5240,7 +5240,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 42,
+              "latencyMs": 52,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: oxygen saturation dropped to 88% during the night with increasing work of breathing. Urgent medical review requested this morning."
@@ -5267,7 +5267,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 36,
+              "latencyMs": 42,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: uncontrolled bleeding from a grazed knee that did not stop after ten minutes of pressure. Immediate clinician attention required."
@@ -5294,7 +5294,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 32,
+              "latencyMs": 37,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident denies any shortness of breath on the stairs. Breathing is comfortable at rest and the chest is clear."
@@ -5321,7 +5321,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 30,
+              "latencyMs": 33,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: resident denies falls since the last visit. Medication review still to be arranged by the pharmacist."
@@ -5348,7 +5348,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 35,
+              "latencyMs": 38,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: pt c/o dizziness w/ postural changes. f/u w/ pharmacist requested, Rx review pending."
@@ -5375,7 +5375,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 33,
+              "latencyMs": 36,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: pt found on floor 0600, A&O x2, RR 30, hypoxic. MD review STAT."
@@ -5402,7 +5402,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 36,
+              "latencyMs": 41,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: observations are unremarkable and temperature is normal. However the resident is confused and has collapsed twice today, requiring urgent assessment."
@@ -5429,7 +5429,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 34,
+              "latencyMs": 37,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: the son asked when Mum comes back for her check. We said we would ring the clinic and sort the booking out for her."
@@ -5483,7 +5483,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 31,
+              "latencyMs": 32,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "out-of-distribution",
@@ -5539,7 +5539,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 25,
+              "latencyMs": 26,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "low-information",
@@ -5567,7 +5567,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 27,
+              "latencyMs": 31,
               "usedFallback": false,
               "failed": false,
               "errorCategory": "low-information",
@@ -5595,7 +5595,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 30,
+              "latencyMs": 28,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: Â€” prescription renewal pending, due in five days."
@@ -5622,7 +5622,7 @@
                 }
               ],
               "engine": "embedding-model (Xenova/bge-small-en-v1.5, q8) + rules (agreement-gated)",
-              "latencyMs": 27,
+              "latencyMs": 35,
               "usedFallback": false,
               "failed": false,
               "note": "Synthetic note: {{{ urgent !!! resident acutely unwell ??? same-day review needed"

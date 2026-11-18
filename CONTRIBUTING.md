@@ -57,6 +57,7 @@ That runs, in order: format check → lint → typecheck → tests → productio
 npm run dev            # development server with hot reload
 npm run check          # the full quality gate
 npm run evaluate       # regenerate reports/evaluation.json
+npm run evaluate:check # compare a fresh run against the committed report
 ```
 
 ### The rule that matters most
@@ -67,6 +68,25 @@ npm run evaluate       # regenerate reports/evaluation.json
 The evaluation report is a committed artefact precisely so that a change to the AI layer cannot
 quietly alter the system's measured behaviour. A pull request that changes the AI layer without
 regenerating the report is incomplete.
+
+### How the CI regression gate works
+
+CI runs the evaluation twice: once to produce a fresh report in a scratch file, and then
+`npm run evaluate:check`, which compares that fresh report against the committed one.
+
+The comparison is **not** a plain file diff. A report records a real run, so it contains a
+generation timestamp and per-scenario latency that legitimately change on every execution; a
+plain diff would always report a difference and the gate would never be usable. Instead the
+comparison separates three kinds of information:
+
+| Field kind                                                          | How it is compared  | Why                                                                              |
+| ------------------------------------------------------------------- | ------------------- | -------------------------------------------------------------------------------- |
+| Decision behaviour — predicted label, abstention, fallback, failure | Exact match         | These are what a reviewer actually experiences                                   |
+| Numeric outputs — confidence and label scores                       | Match within `1e-3` | The same quantized model can differ in the last bits between CPU architectures   |
+| Timing — timestamp, duration, latency                               | Ignored             | Wall-clock numbers are environment dependent, not part of the behaviour contract |
+
+A pull request that changes a decision will fail the gate and print the exact paths that
+differ. If the change is intentional, regenerate the report and commit it.
 
 ## Code conventions
 
@@ -182,6 +202,7 @@ it belongs in `scoring.ts` instead.
 
 ```bash
 npm run evaluate                       # both suites
+npm run evaluate:check                 # confirm the fresh run matches the committed report
 npm run check                          # full gate
 ```
 

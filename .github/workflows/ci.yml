@@ -13,6 +13,16 @@ concurrency:
 permissions:
   contents: read
 
+# onnxruntime-node's postinstall script downloads the optional CUDA execution
+# provider binaries on Linux/x64, and the upstream URL for the pinned version
+# returns 404. The CPU binaries are bundled in the package and this project
+# never uses CUDA, so the download is skipped. The `.npmrc` in the repository
+# sets the same thing for `npm ci`; this environment variable is the
+# documented, forward-compatible equivalent and is checked first by the
+# install script.
+env:
+  ONNXRUNTIME_NODE_INSTALL_CUDA: skip
+
 jobs:
   quality:
     name: Format, lint, typecheck, test, build
@@ -22,7 +32,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20.11'
+          node-version: '22'
           cache: npm
 
       - name: Install dependencies
@@ -51,7 +61,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20.11'
+          node-version: '22'
           cache: npm
 
       - name: Install dependencies
@@ -59,23 +69,29 @@ jobs:
 
       - name: Run the evaluation suites
         # The model weights are fetched from the Hugging Face CDN on first use.
+        # The report is written to a scratch path so the committed report stays
+        # untouched: the regression gate below has to compare against it.
         env:
           NODE_USE_ENV_PROXY: '1'
-        run: npm run evaluate
+        run: npm run evaluate -- --out=reports/evaluation.fresh.json
 
-      - name: Fail if the evaluation report is out of date
+      - name: Fail if the evaluation behaviour changed
         # A change to the AI layer must be accompanied by a regenerated report,
         # so the measured behaviour cannot shift silently.
-        run: |
-          if [ -n "$(git status --porcelain reports/evaluation.json)" ]; then
-            echo "::error::reports/evaluation.json is out of date. Run 'npm run evaluate' and commit the result."
-            git --no-pager diff --stat reports/evaluation.json
-            exit 1
-          fi
+        #
+        # This compares the *decisions* of a fresh run against the committed
+        # report. Wall-clock fields (timestamps, latency) are excluded because
+        # they change on every run; a plain file diff would fail every time and
+        # would not be a usable gate.
+        env:
+          NODE_USE_ENV_PROXY: '1'
+        run: npm run evaluate:check
 
       - name: Upload the evaluation report
         uses: actions/upload-artifact@v4
         with:
           name: evaluation-report
-          path: reports/evaluation.json
+          path: |
+            reports/evaluation.json
+            reports/evaluation.fresh.json
           if-no-files-found: error
