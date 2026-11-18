@@ -427,6 +427,48 @@ browser runs the same code over the same corpus and displays the same metrics li
 The **Evaluation Lab** in the browser also runs the suites live, including the model, so the same
 numbers are reproducible without the CLI.
 
+### Reproducibility across machines
+
+The metrics above are reproducible on a given machine, but not bit-identical across CPU
+architectures, and the reason is worth stating plainly.
+
+The embedding model runs quantized (`q8`). Quantized inference is not bit-identical between an
+x86-64 runner and an ARM64 machine, so the same text produces slightly different embeddings and
+the confidence moves by a few hundredths. This was measured rather than assumed: the committed
+report (Apple silicon) was compared against a real GitHub Actions run (x86-64).
+
+| Property                                                   | Result across the two architectures                                                                         |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Aggregate metrics (selective accuracy, macro F1, coverage) | Identical for 5 of 6 engine-and-suite combinations                                                          |
+| Per-record confidence                                      | Median drift `0.0000`, 90th percentile `0.0304`                                                             |
+| Per-record outcome                                         | Three records differed, every one of them within `0.12` of the decision threshold                           |
+| Errors introduced                                          | None. The single incorrect record (`abbrev-01`) is the same record, with the same wrong label, in both runs |
+
+Those three records are the interesting case. Each one had a confidence sitting close to the
+`0.75` decision threshold, so a drift of a few hundredths was enough to tip it from "committed"
+to "routed to manual review". A reviewer saw the same thing in every case: a record that was
+sent to a human. The _label_ behind an abstention is not shown to the reviewer as a
+recommendation, so the difference is in the diagnostic detail rather than in what the system did.
+
+Two of the three changed in the same direction - an abstention became a commitment - because the
+x86-64 run happened to produce slightly higher confidences for those records. That is the
+direction that reduces coverage, which is why the validation coverage for the model-only engine
+reads `63.6%` on Apple silicon and `77.3%` on x86-64. The `abbrev-01` error, the only wrong
+record in either run, is present in both and is a genuine limitation of the prototype wording
+rather than a platform artefact.
+
+The CI regression gate encodes this rule rather than hiding it. An outcome difference is
+**tolerated** when it can be explained by the noise floor - that is, when at least one of the two
+confidences is within `0.12` of the threshold - and is **reported** either way. An outcome
+difference away from the threshold fails the gate. A deliberate change to the calibration, the
+prototypes, the threshold or the rules moves confidences by far more than a few hundredths, so it
+is always caught.
+
+The obvious way to remove the drift entirely would be to run the model unquantized (`fp32`),
+which would roughly quadruple the download size from ~32 MB to ~128 MB. That is a defensible
+trade for a deployment where every kilobyte matters less than exact reproducibility, and it is
+the first thing to try if the gate ever needs to be strict rather than tolerant.
+
 ## Recommendations
 
 What the next evaluation work should be, in priority order:

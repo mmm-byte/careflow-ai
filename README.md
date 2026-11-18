@@ -372,11 +372,17 @@ npm run evaluate:check                 # compare a fresh run against the committ
 The run writes [`reports/evaluation.json`](reports/evaluation.json), which is committed so every
 number quoted in this repository is verifiable.
 
-CI runs the same evaluation on every push and fails when the **behaviour** changes: a different
-predicted label, a different abstention, a different fallback, or a confidence that moved by
-more than `1e-3`. Wall-clock fields (timestamps, latency) are deliberately excluded, because
-they change on every run and a plain file diff would always report a difference. The gate
-therefore fails on a genuine regression and stays quiet when only the clock moved.
+CI runs the same evaluation on every push and fails when the **behaviour** changes: a record
+that committed a different label, or that committed instead of routing to manual review. The
+comparison ignores wall-clock fields (timestamps, latency), because they change on every run and
+a plain file diff would always report a difference.
+
+It also accounts for the fact that the embedding model is quantized (`q8`) and quantized inference
+is not bit-identical across CPUs. A GitHub x86-64 runner and an Apple-silicon laptop produce
+slightly different embeddings for the same text, which can flip a record whose confidence sits
+close to the decision threshold. An outcome difference within `0.12` of the threshold is
+therefore reported but does not fail the gate; a difference away from the threshold does. The
+margin was measured against a real cross-platform run, not guessed.
 
 ## Measured results
 
@@ -549,7 +555,7 @@ Model Lab explains what changed. Set `NODE_USE_ENV_PROXY=1` if you are behind a 
 
 ## Testing
 
-**86 unit tests**, run with the Node built-in test runner — no test framework dependency.
+**88 unit tests**, run with the Node built-in test runner — no test framework dependency.
 
 ```
 npm test

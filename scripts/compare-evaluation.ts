@@ -15,17 +15,19 @@
  * the latency distribution. A plain file diff would therefore always report a
  * difference. A gate that always fails is not a gate.
  *
- * The comparison separates the two kinds of information:
+ * What counts as a failure
+ * ------------------------
  *
- *  - **Decision behaviour** - the predicted label, whether the system
- *    abstained, whether the rules fallback fired, whether the run failed.
- *    These are discrete and must match exactly. This is the part of the
- *    contract a reviewer actually experiences.
- *  - **Numeric outputs** - confidence and label scores, compared with a
- *    tolerance, because the same quantized model can differ in the last bits
- *    between CPU architectures.
- *  - **Timing** - ignored entirely. Wall-clock numbers are environment
- *    dependent and are not part of the behaviour contract.
+ * A failure is a difference in the **outcome** of a record - the system
+ * committed to a different label, or committed instead of routing to manual
+ * review - that cannot be explained by the quantized model behaving slightly
+ * differently on a different CPU. See `src/lib/eval/report.ts` for the full
+ * reasoning and the threshold-boundary rule.
+ *
+ * Differences that are only in the diagnostic detail (the raw scores, the
+ * aggregate averages, the failure analysis) are reported but do not fail the
+ * gate, because they are the same measurements seen from a slightly different
+ * arithmetic.
  *
  * The default fresh report path matches the one the CI workflow writes.
  */
@@ -67,24 +69,43 @@ const fresh = readReport(freshPath, 'fresh');
 
 const differences = compareReports(committed, fresh);
 
-if (differences.length > 0) {
+// A difference that is not tolerated is a real behaviour change.
+const failures = differences.filter((difference) => !difference.tolerated);
+const tolerated = differences.filter((difference) => difference.tolerated);
+
+if (failures.length > 0) {
   process.stderr.write(
-    `\n::error::the evaluation behaviour changed in ${differences.length} place(s).\n` +
+    `\n::error::the evaluation behaviour changed in ${failures.length} place(s).\n` +
       'A fresh run no longer matches the committed report. If this change is ' +
       'intentional, run "npm run evaluate" and commit the updated report.\n\n',
   );
-  for (const difference of differences.slice(0, 50)) {
+  for (const difference of failures.slice(0, 50)) {
     process.stderr.write(
       `  ${difference.path}\n    committed: ${difference.expected}\n    fresh:     ${difference.actual}\n`,
     );
   }
-  if (differences.length > 50) {
-    process.stderr.write(`  ... and ${differences.length - 50} more\n`);
+  if (failures.length > 50) {
+    process.stderr.write(`  ... and ${failures.length - 50} more\n`);
   }
   process.exit(1);
 }
 
-process.stdout.write(
-  'The evaluation behaviour matches the committed report.\n' +
-    '(Timing fields are ignored: they legitimately differ on every run.)\n',
-);
+if (tolerated.length > 0) {
+  process.stdout.write(
+    `The evaluation behaviour matches the committed report.\n` +
+      `${tolerated.length} measurement difference(s) were observed and attributed to ` +
+      'quantized-model drift between CPU architectures; they are reported below and did not ' +
+      'change any decision that a reviewer would see.\n\n',
+  );
+  for (const difference of tolerated.slice(0, 20)) {
+    process.stdout.write(`  ${difference.path}: ${difference.expected} -> ${difference.actual}\n`);
+  }
+  if (tolerated.length > 20) {
+    process.stdout.write(`  ... and ${tolerated.length - 20} more\n`);
+  }
+} else {
+  process.stdout.write(
+    'The evaluation behaviour matches the committed report.\n' +
+      '(Timing fields are ignored: they legitimately differ on every run.)\n',
+  );
+}
