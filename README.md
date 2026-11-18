@@ -501,16 +501,22 @@ The build produces a fully static site (`output: 'export'`) — no server, no da
 
 The repository is ready to deploy: import it into Vercel and it builds as-is.
 
-| Setting          | Value                   |
-| ---------------- | ----------------------- |
-| Framework        | Next.js (auto-detected) |
-| Build command    | `npm run build`         |
-| Output directory | `out`                   |
-| Install command  | `npm ci`                |
+| Setting         | Value                   |
+| --------------- | ----------------------- |
+| Framework       | Next.js (auto-detected) |
+| Build command   | `npm run build`         |
+| Install command | `npm ci`                |
 
-`vercel.json` pins those settings and adds long-lived caching for hashed assets plus a small set of
-security headers. There is nothing else to configure — no environment variables, no API keys, no
-database.
+**Leave "Output Directory" empty.** This project builds with `output: 'export'`, and Vercel's Next.js
+builder detects the static export on its own — it reads `.next/export-detail.json` to find the exported
+`out/` directory and uploads it as the deployment. Setting "Output Directory" to `out` breaks the
+build, because Vercel then also looks for Next.js build manifests (`routes-manifest.json` and
+friends) inside `out/`, where they do not exist — they stay in `.next/`. The resulting failure is
+`Error: [NEXT_NO_ROUTES_MANIFEST] The file ".../out/routes-manifest.json" couldn't be found.`
+
+`vercel.json` therefore deliberately does **not** set `outputDirectory`. It pins the framework, build
+and install commands, and adds long-lived caching for hashed assets plus a small set of security
+headers. There is nothing else to configure — no environment variables, no API keys, no database.
 
 Two things to know about the deployed build:
 
@@ -555,7 +561,7 @@ Model Lab explains what changed. Set `NODE_USE_ENV_PROXY=1` if you are behind a 
 
 ## Testing
 
-**88 unit tests**, run with the Node built-in test runner — no test framework dependency.
+**92 unit tests**, run with the Node built-in test runner — no test framework dependency.
 
 ```
 npm test
